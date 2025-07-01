@@ -1,0 +1,49 @@
+<mvc:View
+  controllerName="odata.controller.CustomerOrders"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Page
+    id="customerOrdersPage3"
+    title="{i18n>customerOrdersTitle}"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
+
+    <VBox id="customerOrdersVBox" class="sapUiSmallMargin">
+      <Text id="customerOrdersHeaderText" text="{i18n>ordersHeader}" class="sapUiSmallMarginBottom sapMTitle" />
+      
+      <Table
+        id="customerOrdersTable"
+        items="{ path: 'Orders' }"
+        growing="true"
+        class="sapUiResponsiveMargin"
+        inset="false"
+        width="100%">
+
+        <columns>
+          <Column id="customerOrdersColOrderID">
+            <Text id="customerOrdersColOrderIDText" text="{i18n>orderID}" />
+          </Column>
+          <Column id="customerOrdersColOrderDate" minScreenWidth="Tablet" demandPopin="true">
+            <Text id="customerOrdersColOrderDateText" text="{i18n>orderDate}" />
+          </Column>
+          <Column id="customerOrdersColShipName" minScreenWidth="Tablet" demandPopin="true">
+            <Text id="customerOrdersColShipNameText" text="{i18n>shipName}" />
+          </Column>
+        </columns>
+
+        <items>
+          <ColumnListItem id="customerOrdersListItemTemplate">
+            <cells>
+              <Text id="customerOrdersCellOrderID" text="{OrderID}" />
+              <Text id="customerOrdersCellOrderDate" text="{OrderDate}" />
+              <Text id="customerOrdersCellShipName" text="{ShipName}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+
+      </Table>
+    </VBox>
+
+  </Page>
+</mvc:View>

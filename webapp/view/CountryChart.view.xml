@@ -1,0 +1,54 @@
+<mvc:View
+  controllerName="odata.controller.CountryChart"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.data="sap.viz.ui5.data"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+  <Page
+    id="countryChartPage"
+    title="Country-wise Customer Distribution"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
+
+    <viz:VizFrame
+      id="idCountryPieChart"
+      height="500px"
+      width="100%"
+      uiConfig="{applicationSet:'fiori'}"
+      vizType="pie">
+      
+      <viz:dataset>
+        <viz.data:FlattenedDataset id="idCountryDataset" data="{/CountryData}">
+          <viz.data:dimensions>
+            <viz.data:DimensionDefinition
+              id="idCountryDimension"
+              name="Country"
+              value="{Country}" />
+          </viz.data:dimensions>
+          <viz.data:measures>
+            <viz.data:MeasureDefinition
+              id="idCountryMeasure"
+              name="Count"
+              value="{Count}" />
+          </viz.data:measures>
+        </viz.data:FlattenedDataset>
+      </viz:dataset>
+      
+      <viz:feeds>
+        <viz.feeds:FeedItem
+          id="idFeedSize"
+          uid="size"
+          type="Measure"
+          values="Count" />
+        <viz.feeds:FeedItem
+          id="idFeedColor"
+          uid="color"
+          type="Dimension"
+          values="Country" />
+      </viz:feeds>
+      
+    </viz:VizFrame>
+  </Page>
+</mvc:View>

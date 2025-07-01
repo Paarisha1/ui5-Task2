@@ -1,0 +1,55 @@
+<mvc:View
+  controllerName="odata.controller.odata"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Page id="customerPage" title="{i18n>customersTitle}">
+
+    <!-- 🌟 Show Chart Button at the Top -->
+    <Button
+      id="showDataButton"
+      text="Show Country Chart"
+      press=".onShowChart"
+      class="sapUiSmallMarginBottom"
+    />
+
+    <SearchField 
+      id="customerSearchField"
+      placeholder="Filter by Country"
+      liveChange=".onSearch"
+      width="100%" />
+
+    <Table
+      id="customerList"
+      inset="false"
+      items="{
+        path: '/Customers'
+      }"
+      mode="SingleSelectMaster"
+      itemPress=".onCustomerPress"
+      growing="true"
+      class="sapUiResponsiveMargin"
+      width="100%">
+
+      <columns>
+        <Column id="customerIDColumn">
+          <Text id="customerIDHeader" text="{i18n>customerID}" />
+        </Column>
+        <Column id="companyNameColumn">
+          <Text id="companyNameHeader" text="{i18n>companyName}" />
+        </Column>
+      </columns>
+
+      <items>
+        <ColumnListItem id="customerListItem" type="Navigation">
+          <cells>
+            <Text id="customerIDCell" text="{CustomerID}" />
+            <Text id="companyNameCell" text="{CompanyName}" />
+          </cells>
+        </ColumnListItem>
+      </items>
+
+    </Table>
+
+  </Page>
+</mvc:View>
